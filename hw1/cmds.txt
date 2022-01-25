@@ -1,0 +1,34 @@
+minikube start --vm-driver=hyperv                  
+
+
+minikube addons enable ingress
+
+minikube stop
+minikube delete
+
+minikube dashboard
+
+kubectl describe pod
+
+127.0.0.1 arch.homework
+
+
+docker pull sbrv/simple_http_server:latest
+
+minikube docker-env
+
+kubectl expose deployment simple-http-server --port=8000 --type=NodePort
+
+
+
+minikube service --url simple-http-server
+
+
+kubectl get -o yaml
+
+kubectl get pods -o wide
+
+kubectl get services
+
+
+

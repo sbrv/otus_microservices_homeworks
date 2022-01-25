@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-http-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-http-server
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: simple-http-server
+    spec:
+      containers:
+        - name: simple-http-server
+          image: sbrv/simple_http_server:latest
+          ports:
+            - name: http
+              containerPort: 8000
+          livenessProbe:
+            httpGet:
+              port: 8000
+              path: /hello
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+          readinessProbe:
+            httpGet:
+              port: 8000
+              path: /health
+            initialDelaySeconds: 10
+            periodSeconds: 5
