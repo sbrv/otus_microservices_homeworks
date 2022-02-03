@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw2-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hw2-app
+  template:
+    metadata:
+      labels:
+        app: hw2-app
+    spec:
+      containers:
+        - name: hw2
+          image: sbrv/hw2:v1
+          envFrom:
+            - configMapRef:
+                name: hw2-config
+            - secretRef:
+                name: hw2-secret
+          ports:
+            - name: web
+              containerPort: 8000

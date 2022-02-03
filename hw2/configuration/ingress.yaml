@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hw2-ingress
+spec:
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: hw2-service
+      port:
+        number: 9000
+  rules:
+    - host: arch.homework
+      http:
+        paths:
+          - path: /*
+            pathType: Prefix
+            backend:
+              service:
+                name: hw2-service
+                port:
+                  number: 9000

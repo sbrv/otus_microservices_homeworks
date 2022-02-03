@@ -1,0 +1,5 @@
+D:\OTUS\Homeworks\hw2\configuration>kubectl get service ingress-nginx-controller --namespace=ingress-nginx
+NAME                       TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
+ingress-nginx-controller   NodePort   10.99.145.41   <none>        80:32688/TCP,443:31748/TCP   125m
+
+kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8080:80
